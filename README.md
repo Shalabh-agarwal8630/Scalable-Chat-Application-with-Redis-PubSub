@@ -1,18 +1,18 @@
-# Turborepo starter
+# Scalable Chat Application with Redis PubSub in TurboRepo
 
-This is an official starter Turborepo.
+This project is a scalable chat application built using Redis PubSub architecture on Aiven cloud, organized with TurboRepo. The TurboRepo structure enhances project organization and scalability. Below are instructions on setting up and running the project.
 
-## Using this example
+## Getting Started
 
-Run the following command:
+To use this example, run the following command to initialize TurboRepo:
 
 ```sh
 npx create-turbo@latest
 ```
 
-## What's inside?
+## Project Structure
 
-This Turborepo includes the following packages/apps:
+This TurboRepo includes the following packages/apps:
 
 ### Apps and Packages
 
@@ -22,56 +22,65 @@ This Turborepo includes the following packages/apps:
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Each package/app is written in 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+## Project Setup
 
-This Turborepo has some additional tools already setup for you:
+### 1. Clone the Repository
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Clone the TurboRepo repository:
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+git clone [repo-url]
 ```
 
-### Develop
+### 2. NodeJS Socket Server Setup
 
-To develop all apps and packages, run the following command:
+Follow the steps outlined in the provided tutorial to set up the NodeJS socket server. This server will handle incoming connections from clients and manage real-time communication.
 
-```
-cd my-turborepo
-pnpm dev
-```
+## Building Full Stack Chat Application
 
-### Remote Caching
+### 1. Client-Side Setup
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- Create the necessary HTML, CSS, and JavaScript files for the client-side interface.
+- Implement the functionality to send and receive messages using web sockets.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+### 2. Server-Side Setup
 
-```
-cd my-turborepo
-npx turbo login
-```
+- Set up routes and controllers to handle incoming socket connections.
+- Implement logic to manage Redis PubSub events for real-time message broadcasting.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Setting up Redis on Aiven
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### 1. Sign up for Aiven
 
-```
-npx turbo link
-```
+Create an account on Aiven.io and navigate to the Redis service dashboard.
+
+### 2. Create a Redis Service
+
+Create a new Redis service instance on Aiven, choosing the appropriate configuration based on your application's requirements.
+
+### 3. Obtain Connection Details
+
+Retrieve the connection details (host, port, username, password) provided by Aiven for connecting to your Redis service.
+
+## Connecting with Redis Pub-Sub
+
+- Use the obtained connection details to establish a connection with the Redis service from your NodeJS server.
+- Subscribe to Redis PubSub channels to listen for incoming messages and broadcast them to connected clients.
+
+## Testing our Scalable Chat Application
+
+- Run the NodeJS server and open multiple client instances to simulate concurrent users.
+- Verify that messages sent by one client are received in real time by all other connected clients.
+
+## Conclusion
+
+Congratulations! You have successfully built a scalable chat application using Redis PubSub architecture on Aiven cloud, organized with TurboRepo. This application can handle high traffic and provide real-time communication capabilities to users
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
+Learn more about the power of TurboRepo:
 
 - [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
 - [Caching](https://turbo.build/repo/docs/core-concepts/caching)
